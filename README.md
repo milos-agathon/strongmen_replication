@@ -14,3 +14,5 @@ While the dataset does not necessarily include the universe of all strikes, the 
 
 - ``shp`` includes shapefiles neccessary for the replciation of the maps. SRB_adm2.shp are municipality polygons for Serbia proper in the 1990s and I created them from the scratch using the latest settlement shapefile from [Geosrbija](https://geosrbija.rs/) and the 1991 census. Following list of municipalities and their settlements from the 1991 census, I aggregated the settlement level shapefile to the 1991 municipality level shapefile. Other shapefiles in this folder are administrative level 0 polygons for Montenegro (MNE_adm0), Kosovo (XKO_adm0) and Serbia proper (SRB_adm0), which I downloaded from [OSM Geofabrik](https://download.geofabrik.de/europe.html).
 
+- ``output`` contains plots that are part of the publication or online appendix.
+
