@@ -7,4 +7,7 @@ The replication material includes the following folders:
 
 - ``data`` encompasses three data frames in .csv format. First, did_elections_final.csv is the panel dataset for the replication of the figures and tables in the article and appendix. Second, gradovi.csv includes the names and geo coordinates in EPSG4326 (WGS84) that are used to produce Figure 1. Finally, polls.csv consists of aggregated polling results for Milosevic's party in the 1990s and come from the Institute of Social Science in Belgrade. The raw polling data and codebooks are available upon request.
 
-- 
+- ``raw-data`` is the dataset that includes information on the location, coordinates, and date of NATO bombing. The column type designates the nature of the target (if applicable) while descr column specifies the target subcategory (if applicable). The information on deaths from the bombing (deaths) and their categorization (death_stat) originates from [The Humanitarian Law Center's data](http://www.hlc-rdc.org/db/nato_en/index.html). Finally the source of the bombing entry is provided under column source.
+
+
+
