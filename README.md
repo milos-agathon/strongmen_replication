@@ -16,3 +16,5 @@ While the dataset does not necessarily include the universe of all strikes, the 
 
 - ``output`` contains plots that are part of the publication or online appendix.
 
+![alt text](https://github.com/milos-agathon/strongmen_replication/blob/main/output/fig1.png?raw=true)
+
