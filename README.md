@@ -3,4 +3,4 @@ This repo provides data and code for replicating JPR article "Strongmen Cry Too:
 
 The replication material includes the following folders:
 
-- <mark>R<mark>
+- ``R``
