@@ -31,5 +31,5 @@ Milos Popovic. (2021). Replication files for: Strongmen Cry Too: The Effect of A
 Milos Popovic. (2021). Strongmen Cry Too: The Effect of Aerial Bombing on Voting for The Incumbent in Competitive Autocracies. Journal of Peace Research, accepted & forthcooming
 
 
-![alt text](https://github.com/milos-agathon/strongmen_replication/blob/main/output/fig1.png?raw=true)
+![alt text](https://github.com/milos-agathon/strongmen_replication/blob/main/bombing.png?raw=true)
 
