@@ -16,7 +16,7 @@ While the dataset does not necessarily include the universe of all strikes, the 
 
 - ``output`` contains plots that are part of the publication or online appendix.
 
-- There are also two files in the root directory: ``article.pdf`` is the last version of the paper that was conditionally accepted by Journal of Peace Research and ``appendix.pdf`` is the online supplementary file that includes additional information on the datasets used such as the codebook for did_elections_final.csv and robustness tests.
+- There is also ``article.pdf`` in the root directory, which is the last version of the paper that was conditionally accepted by Journal of Peace Research. At page 35, you'll find the online supplementary file that includes information on the datasets used such as the codebook for did_elections_final.csv as well as additional robustness tests.
 
 ![alt text](https://github.com/milos-agathon/strongmen_replication/blob/main/output/fig1.png?raw=true)
 
