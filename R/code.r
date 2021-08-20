@@ -20,6 +20,7 @@ library(rgdal, quietly=T)
 library(reshape2, quietly=T)
 library(ascii, quietly=T)
 library(stargazer, quietly=T)
+library(maptools, quietly=T)
 
 ################################################
 #                                              #
