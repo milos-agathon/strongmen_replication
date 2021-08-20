@@ -1,6 +1,6 @@
 # Replication code for "Strongmen Cry Too: The Effect of Aerial Bombing on Voting for The Incumbent in Competitive Autocracies"
 # Milos Popovic
-# 2021/5/25
+# 2021/08/20
 
 # load libraries
 library(plyr, quietly=T)
@@ -21,6 +21,10 @@ library(reshape2, quietly=T)
 library(ascii, quietly=T)
 library(stargazer, quietly=T)
 library(maptools, quietly=T)
+library(dplyr, quietly=T)
+library(tidyverse, quietly=T)
+library(sf, quietly=T)
+library(zoo, quietly=T)
 
 ################################################
 #                                              #
@@ -226,15 +230,15 @@ coord_fixed(ratio = 1.35) +
     pch=15,
     alpha=1,
     size=.75)+
-  geom_text_repel(data=grad, 
+  geom_text(data=grad, 
     aes(x=long, 
       y=lat, 
       label = place),
-    size = 3, 
-    hjust = 0.5, 
-    vjust=-0.25,
-    col="grey10",
-    alpha=1)+
+      size = 2.5, 
+      hjust = 0.5, 
+      vjust=-0.25,
+      col="grey10",
+      alpha=1)+
   scale_size(name="Count",
     breaks=c(1,2,5,10,26), 
     range=c(1,8), 
@@ -251,8 +255,8 @@ size= guide_legend(override.aes = list(alpha=1),
             nrow = 6,
             byrow = T,
             reverse = F,
-            label.position = "right",
-      family="georg")
+            label.position = "right"
+            )
   ) +
   theme_minimal() +
     theme(
@@ -277,32 +281,20 @@ size= guide_legend(override.aes = list(alpha=1),
 labs(x=NULL, y=NULL,title="",
 caption="")
 # export
-ggsave(filename="fig11.png", width=7, height=8, dpi = 600, device='png', g1)
+ggsave(filename="fig1.png", width=7, height=8, dpi = 600, device='png', g1)
 
   # Figure 2
-  rs$bombed <- as.factor(rs$bombed)
-  rs$bombed <- factor(rs$bombed, levels=c("1", "0"))
-
-  f <- as.data.frame(rs)
-  r <- fortify(rs, region = "id")
-  d <- r %>% left_join(f, by = "id")
+rr <- rs %>% st_as_sf()
+kk <- ks %>% st_as_sf()
+mm <- me %>% st_as_sf()
 
 g2 <- ggplot() +
-      geom_polygon(data=d, aes(x = long, 
-              y = lat, fill=bombed, 
-              group = group)) +
-      geom_path(data=d, aes(x = long, 
-              y = lat, 
-              group = group), color="white", size=0.25)+
-      geom_path(data=ks, aes(x = long, 
-              y = lat, 
-              group = group), color="grey60", size=0.25) +
-      geom_path(data=me, aes(x = long, 
-              y = lat, 
-              group = group), color="grey60", size=0.25) +
-      coord_map() +
-      scale_fill_manual(values=c('#d11135', '#066598'),
-                labels=c("bombed", "not bombed"),
+geom_sf(data=rr, aes(fill=factor(bombed)), color="white", size=.25) +
+geom_sf(data=kk, fill="transparent", color="grey60", size=0.25) +
+geom_sf(data=mm, fill="transparent", color="grey60", size=0.25) +
+coord_sf(crs = 4326) + 
+scale_fill_manual(values=c('#066598', '#d11135'),
+                labels=c("not bombed", "bombed"),
                 name="") +
       guides(fill=guide_legend(
             direction = "vertical",
@@ -340,7 +332,7 @@ g2 <- ggplot() +
 labs(x=NULL, y=NULL,title="",
 caption="")
 
-ggsave("fig2.png", height=8, width=7, g2)
+ggsave("fig2.png", height=8, width=7, dpi = 600, g2)
 
 # Figure 3
 did <- a
@@ -403,12 +395,12 @@ geom_text(
     hjust = 0.5,
     fontface = 'bold',
     colour="grey30",
-    family = "georg",
     size = 4
   ) +
   guides(group=F,
   col = guide_legend(override.aes = list(size=1, linetype=0, alpha=1))) +
-  theme(panel.background = element_blank(),
+  theme(
+        panel.background = element_blank(),
         panel.grid.minor = element_blank(),
         panel.grid.major=element_blank(),
         panel.border=element_blank(),
@@ -428,9 +420,8 @@ geom_text(
 labs(title = "",
         x="Year", 
               y="Predicted\nShare of Votes\nfor SPS/JUL")
-#print(p2)
 
-ggsave(file="fig3.png", p2)
+ggsave(file="fig3.png", dpi = 600, p2)
 
 ###############################################
 #              TABLE 1                        #
@@ -598,7 +589,6 @@ geom_text(
     hjust = 0,
     fontface = 'bold',
     colour="grey40",
-    family = "georg",
     size = 4
   ) +
   theme(panel.background = element_blank(),
